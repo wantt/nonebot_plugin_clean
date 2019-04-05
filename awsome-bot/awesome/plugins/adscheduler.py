@@ -23,8 +23,8 @@ async def _():
                 groupid = group_id.split('#')[0]
                 if groupid not in adgroup and groupid.isdigit():
                     adgroup.append(groupid)
-                    print(groupid)
-                    admessage = group_id.split('#')[1:]
+                    #print(groupid)
+                    #admessage = group_id.split('#')[1:]
 #                    await bot.send_group_msg(group_id=int(groupid), message=f'{"".join(admessage)}')
                     await bot.send_group_msg(group_id=int(groupid), message=f'{"".join(random.choice(ad_message))}')
 #                    await session.send(f'{group_id}定时发送成功')
@@ -47,7 +47,7 @@ async def add_adgroup(session:CommandSession):
             #await f.write(admessage +'\n')
             await f.write(session.current_arg_text.split('#')[0] +'\n')
             await f.fsync()
-        await session.send(f'添加成功 {admessage}')
+        await session.send(f'添加成功 ')
     else:
         await session.send("添加失败，正确格式：+ 群号#内容 \n 如：+ 1122341")
 
@@ -92,7 +92,7 @@ async def send_ad(session:CommandSession):
                         adgroup.append(groupid)
                         await bot.send_group_msg(group_id=int(groupid), message=f'{"".join(random.choice(ad_message))}')
 #                        await bot.send_group_msg(group_id=int(groupid), message=f'{"".join(admessage)}')
-                        await session.send(f'群{groupid}成功发送消息成功{admessage}')
+                        await session.send(f'群{groupid}成功发送消息成功')
        
                 except CQHttpError:
                     await session.send(f'{groupid} 发送失败,你应该没有这个群')
